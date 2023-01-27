@@ -1,15 +1,7 @@
 <script>
   import "../app.css"
-
+  // document.body.style.backgroundColor = 'var(--bg-color)'
+  import AutocomplateSearch from "$lib/AutocomplateSearch.svelte"
 </script>
-
-<nav>
-  <a href="/">Home</a>
-  <a href="/about">About</a>
-  <a href="/settings">Settings</a>
-</nav>
-
+<AutocomplateSearch/>
 <slot></slot>
-
-<hr>
-by chanasia

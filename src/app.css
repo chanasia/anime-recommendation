@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  font-family: 'IBM Plex Sans Thai', sans-serif;
+}
+
 :root{
+  --bg-color: #373a3c;
+  --card-color: #222;
   --main-color: #ed1ef5;
-  --font-color: #c4c4c4;
-  --bg-color: #222
+  --font-color: #efef;
+  --inputText-color: #555;
 }

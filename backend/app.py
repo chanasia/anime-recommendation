@@ -1,4 +1,5 @@
 from flask import Flask, abort, send_file
+from flask_cors import CORS
 from models import AnimeModels
 from infodb import AnimeList
 import warnings
@@ -6,6 +7,7 @@ import warnings
 warnings.filterwarnings("ignore", message="specific warning message")
 
 app = Flask(__name__)
+CORS(app)
 app.config['JSON_AS_ASCII'] = False
 model = AnimeModels()
 infos = AnimeList()

@@ -23,7 +23,7 @@ class AnimeModels:
             "anime_id": int(self.df_anime.iloc[id].anime_id), 
             "name":name
             } \
-             for id, name in enumerate(self.all_anime_names) if str.lower(partial) in str.lower(name)]
+             for id, name in enumerate(self.all_anime_names) if str.lower(partial) in str.lower(name)][:10]
 
     def similar_animes(self, id):
         

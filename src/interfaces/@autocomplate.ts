@@ -1,4 +1,4 @@
-interface AnimeInfo{
+export interface AnimeInfo{
   anime_id: number;
   id: number;
   name: string;
