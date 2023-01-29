@@ -11,11 +11,16 @@ module.exports = {
       backgroundColor:{
         'main-color': '#ed1ef5',
         'background-color': '#373a3c',
-        'inputText-color': '#555'
+        'inputText-color': '#555',
+        'inputText2-color': '#333'
       },
       borderColor: {
         'main-color': '#ed1ef5',
         'inputText-color': '#555'
+      },
+      gridTemplateColumns:{
+        'currentAnime': '1fr 2fr',
+        'labelInfo': '100px 1fr'
       }
     },
   },
