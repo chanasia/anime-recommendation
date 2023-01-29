@@ -43,6 +43,11 @@ export interface Anime{
   anime_name: string
 }
 
+export interface GenresInfo{
+  counts: number,
+  listanimes: Anime[]
+}
+
 export interface GenresRecommand{
-  datas: Anime[]
+  datas: GenresInfo
 }

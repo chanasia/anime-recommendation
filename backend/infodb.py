@@ -71,3 +71,16 @@ class AnimeList():
             df_match = (self.df_anime.loc[genre_match[genre_match.values == True].index].sort_values(by='rating', ascending=False).head(100)).sample(frac=1)
 
             return list((df_match[['anime_id', 'anime_name']].head(10)).to_dict(orient='records'))
+
+    def get_genre_counts(self, genre_name):
+        return int(self.genre_lists[self.genre_lists.genre == genre_name].counts.values[0])
+
+    def get_genre_with_page(self, genre_selected, page):
+        if(self.is_genre_list_names(genre_selected)):
+            start_index = (page-1)*30
+            end_index = page*30-1
+            genreMatch = self.df_anime.genre.apply(lambda x: True if len([item for item in x.split(", ") if item in genre_selected]) != 0 else False)
+            df_match = (self.df_anime.loc[genreMatch[genreMatch.values == True].index].sort_values(by='rating', ascending=False)).reset_index(drop=True)
+            if len(df_match.loc[start_index:end_index].values) != 0:
+                df_page = df_match.loc[start_index:end_index]
+                return df_page[['anime_id', 'anime_name']].to_dict(orient='records')

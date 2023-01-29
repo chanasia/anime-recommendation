@@ -1,4 +1,4 @@
-from flask import Flask, abort, send_file
+from flask import Flask, abort, send_file, request
 from flask_cors import CORS
 from infodb import AnimeList
 import warnings
@@ -61,7 +61,28 @@ def get_anime_match_genre(genre_selected):
     anime_match_genre = infos.get_anime_match_genre(genre_selected)
     if(anime_match_genre is None): abort(404)
     return{
-        "datas": anime_match_genre
+        "datas": {
+            "counts": infos.get_genre_counts(genre_selected),
+            "listanimes" : anime_match_genre
+        }
+    }
+
+@app.route('/genre/')
+def get_genre_with_page():
+    genre = request.args.get("name")
+    page = request.args.get("page")
+    if((genre is None) | (page is None) | (page.isdigit() is not True) | (infos.is_genre_list_names(genre) is not True)): abort(404)
+    page_animes = infos.get_genre_with_page(genre, int(page))
+    if(page_animes is None): abort(404)
+    return{
+        "datas": page_animes
+    }
+
+@app.route('/get_genre_counts/<string:genre_selected>')
+def get_genre_counts(genre_selected):
+    if(infos.is_genre_list_names(genre_selected) is False): abort(404)
+    return{
+        "datas": infos.get_genre_counts(genre_selected)
     }
 
 if __name__ == "__main__":
