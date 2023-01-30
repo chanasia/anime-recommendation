@@ -21,6 +21,11 @@ module.exports = {
       gridTemplateColumns:{
         'currentAnime': '1fr 2fr',
         'labelInfo': '100px 1fr'
+      },
+      width: {
+        '128': '32rem',
+        '160': '40rem',
+        '192': '48rem'
       }
     },
   },

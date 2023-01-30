@@ -10,7 +10,7 @@ export const load = ( async ({ params, fetch }) => {
   let counts:number;
 
   try{
-    const res = await fetch(`http://${url}/get_genre_counts/${params.name}`)
+    const res = await fetch(`http://${url}/api/get_genre_counts/${params.name}`)
     const json = await res.json() as Datas
     counts = json.datas
   }catch{

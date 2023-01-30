@@ -11,7 +11,7 @@ app.config['JSON_AS_ASCII'] = False
 
 infos = AnimeList()
 
-@app.route('/partial_name/<string:name>')
+@app.route('/api/partial_name/<string:name>')
 def anime_name(name):
     if(name is None):
         abort(404)
@@ -19,7 +19,7 @@ def anime_name(name):
         "datas": infos.search_partial_name(name)
     }
 
-@app.route('/similar_animes/<int:anime_id>')
+@app.route('/api/similar_animes/<int:anime_id>')
 def similar_name(anime_id):
     current_info = infos.get_info(anime_id)
     similar_animes = infos.similar_animes(anime_id)
@@ -32,7 +32,7 @@ def similar_name(anime_id):
         }
     }
 
-@app.route('/image/<int:anime_id>')
+@app.route('/api/image/<int:anime_id>')
 def image(anime_id):
     if(anime_id is None): abort(404)
     try:
@@ -50,13 +50,13 @@ def get_info(anime_id):
     }
 
 
-@app.route('/genre_lists/')
+@app.route('/api/genre_lists/')
 def genre_lists():
     return{
         "datas": infos.get_genre_list()
     }
 
-@app.route('/get_anime_match_genre/<string:genre_selected>')
+@app.route('/api/get_anime_match_genre/<string:genre_selected>')
 def get_anime_match_genre(genre_selected):
     anime_match_genre = infos.get_anime_match_genre(genre_selected)
     if(anime_match_genre is None): abort(404)
@@ -67,7 +67,7 @@ def get_anime_match_genre(genre_selected):
         }
     }
 
-@app.route('/genre/')
+@app.route('/api/genre/')
 def get_genre_with_page():
     genre = request.args.get("name")
     page = request.args.get("page")
@@ -78,11 +78,19 @@ def get_genre_with_page():
         "datas": page_animes
     }
 
-@app.route('/get_genre_counts/<string:genre_selected>')
+@app.route('/api/get_genre_counts/<string:genre_selected>')
 def get_genre_counts(genre_selected):
     if(infos.is_genre_list_names(genre_selected) is False): abort(404)
     return{
         "datas": infos.get_genre_counts(genre_selected)
+    }
+
+@app.route('/api/get_anime_2023_with_page/')
+def get_anime_2023_with_page():
+    page = request.args.get("page")
+    if((page is None) | (page.isdigit() is not True)): abort(404)
+    return{
+        "datas": infos.get_anime_2023_with_page(int(page))
     }
 
 if __name__ == "__main__":

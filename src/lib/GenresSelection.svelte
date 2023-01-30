@@ -14,7 +14,7 @@ let dataJson: GenreCounts[] = [];
 
 const fetchData = debounce(async () => {
   try {
-    const res = await fetch(`${url}/genre_lists/`)
+    const res = await fetch(`${url}/api/genre_lists/`)
     const json = await res.json() as GenreLists
     dataJson = json.datas
   } catch (error) {

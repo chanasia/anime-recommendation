@@ -51,3 +51,7 @@ export interface GenresInfo{
 export interface GenresRecommand{
   datas: GenresInfo
 }
+
+export interface Anime2023{
+  datas: Anime[]
+}

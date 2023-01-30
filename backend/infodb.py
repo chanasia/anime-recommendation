@@ -14,6 +14,12 @@ class AnimeList():
         self.all_anime_names = list(df_anime.anime_name.values)
         self.all_anime_ids = list(df_anime.anime_id.values)
         self.genre_lists = pd.DataFrame(data={'genre': genre, "counts": count})
+        self.df_anime2023 = df_anime.copy()
+
+        self.df_anime2023.aired = self.df_anime2023.aired.str.extract(r'(\d{4})')
+        self.df_anime2023.aired = self.df_anime2023.aired.fillna(0)
+        self.df_anime2023.aired = self.df_anime2023.aired.astype(int)
+        self.df_anime2023 = (self.df_anime2023[self.df_anime2023.aired.isin([2023])].sort_values(by="rating", ascending=False)).reset_index(drop=True)
 
         print("Loading models..")
 
@@ -86,3 +92,17 @@ class AnimeList():
             if len(df_match.loc[start_index:end_index].values) != 0:
                 df_page = df_match.loc[start_index:end_index]
                 return df_page[['anime_id', 'anime_name']].to_dict(orient='records')
+        
+    
+    def get_anime_2023_with_page(self, page):
+        if page == 0:
+            page = 1
+            limit = 10
+        elif page == 1: limit = 30
+        else: limit = 10
+        start_index = (page-1)*limit
+        end_index = page*limit-1
+        if len(self.df_anime2023.loc[start_index:end_index]) != 0:
+            df_page = self.df_anime2023.loc[start_index:end_index]
+            return df_page[['anime_id', 'anime_name']].to_dict(orient='records')
+

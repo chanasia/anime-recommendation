@@ -60,8 +60,8 @@ $: if(data){
 {#if currentInfo && similarAnimes}
 <div style="background-color: #2e3032;">
   <div class="container mx-auto grid md:grid-cols-currentAnime sm:grid-cols-1 gap-8 py-4">
-    <div class="justify-self-end  self-center">
-      <img class="w-full object-cover" style="max-width: 225px; height: 325px;" src={`http://127.0.0.1:5000/image/${currentInfo.anime_id}`} alt={currentInfo.anime_name}>
+    <div class="md:justify-self-end justify-self-center self-center">
+      <img class="w-full object-cover" style="max-width: 225px; height: 325px;" src={`http://127.0.0.1:5000/api/image/${currentInfo.anime_id}`} alt={currentInfo.anime_name}>
     </div>
     <div class="text-purple-400 tracking-wide">
       <div class="grid grid-cols-labelInfo">
@@ -126,12 +126,12 @@ $: if(data){
 <div class="container mx-auto my-4 text-font-color font-semibold -tracking-tighter text-xl">
   <h1>Recommend  for similar animes <span class="text-main-color">✦</span></h1>
 </div>
-<div class="grid grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 container mx-auto select-none">
+<div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 container mx-auto select-none">
   {#each similarAnimes as item}
     <a href={`/anime/${item.anime_id}`}>
       <div class="text-font-color flex flex-col tracking-wide relative card" style="width: 100%; max-width: 150px;">
         <div class="overflow-hidden" style="width: 100%; height: 217px; max-width: 150px;">
-          <img class="object-cover w-full h-full" src={`http://127.0.0.1:5000/image/${item.anime_id}`} alt={item.name}>
+          <img class="object-cover w-full h-full" src={`http://127.0.0.1:5000/api/image/${item.anime_id}`} alt={item.name}>
         </div>
         <span class="mt-1 text-overflow">{item.name}</span>
         <span class="text-floating">{item.name}</span>
