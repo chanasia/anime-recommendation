@@ -41,7 +41,7 @@ def image(anime_id):
         return 'Image not found', 404
 
 
-@app.route('/get_info/<int:anime_id>')
+@app.route('/api/get_info/<int:anime_id>')
 def get_info(anime_id):
     getInfo = infos.get_info(anime_id)
     if((getInfo is None) | (anime_id is None)): abort(404)

@@ -8,7 +8,7 @@ let listanimes: Anime[] = [];
 
 const fetchData = debounce(async () => {
   try{
-    const res = await fetch(`http://${url}/api/get_anime_2023_with_page/?page=0`)
+    const res = await fetch(`http://${url}/api/get_anime_2023_with_page/?page=1`)
     const json = await res.json() as Anime2023;
     listanimes = json.datas
   }catch(error){
