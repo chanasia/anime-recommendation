@@ -7,15 +7,14 @@ import ChevronRight from 'svelte-material-icons/ChevronRight.svelte'
 import ChevronLeft from 'svelte-material-icons/ChevronLeft.svelte'
 import { onMount, onDestroy } from 'svelte';
 
-export let ipWebsite: string;
-export let portBackend: string;
 export let genreSelected: string;
+const url = 'http://localhost:5000'
 
 let dataJson: GenreCounts[] = [];
 
 const fetchData = debounce(async () => {
   try {
-    const res = await fetch(`http://${ipWebsite}:${portBackend}/genre_lists/`)
+    const res = await fetch(`${url}/genre_lists/`)
     const json = await res.json() as GenreLists
     dataJson = json.datas
   } catch (error) {

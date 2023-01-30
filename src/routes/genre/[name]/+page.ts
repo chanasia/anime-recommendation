@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
-import { IP_WEBSITE, PORT_BACKEND } from '$env/static/private';
+import type { PageLoad } from './$types';
 
+const url = "localhost:5000"
 interface Datas{
   datas: number
 }
@@ -10,7 +10,7 @@ export const load = ( async ({ params, fetch }) => {
   let counts:number;
 
   try{
-    const res = await fetch(`http://${IP_WEBSITE}:${PORT_BACKEND}/get_genre_counts/${params.name}`)
+    const res = await fetch(`http://${url}/get_genre_counts/${params.name}`)
     const json = await res.json() as Datas
     counts = json.datas
   }catch{
@@ -21,4 +21,4 @@ export const load = ( async ({ params, fetch }) => {
     genreName: params.name,
     counts
   };
-}) satisfies PageServerLoad;
+}) satisfies PageLoad;

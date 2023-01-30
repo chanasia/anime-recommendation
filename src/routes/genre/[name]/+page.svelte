@@ -2,14 +2,14 @@
 import '../../../app.css'
 import type { PageData } from './$types';
 import type { Anime } from '../../../interfaces/@anime';
+import { onMount } from 'svelte';
 
-export let data: PageData;
-
+export let data: PageData
+const url = "localhost:5000"
 interface Datas{
   datas: Anime[]
 }
 
-const { ipWebsite, portBackend } = data
 
 let genreName = data.genreName;
 let counts = data.counts;
@@ -20,7 +20,7 @@ let page = 1;
 
 async function fetchData() {
   try{
-    const response = await fetch(`http://${ipWebsite}:${portBackend}/genre/?name=${genreName}&page=${page}`);
+    const response = await fetch(`http://${url}/genre/?name=${genreName}&page=${page}`);
     const json = await response.json() as Datas;
     dataJson = [...dataJson, ...json.datas];
   }catch (error) {
@@ -39,6 +39,10 @@ function handleScroll() {
     fetchData();
   }
 }
+
+onMount(() => {
+  // handleScroll()
+})
 
 $: if(scrollY) handleScroll()
 </script>
@@ -90,14 +94,14 @@ $: if(scrollY) handleScroll()
 <div class="container mx-auto my-4 text-font-color font-semibold -tracking-tighter text-xl">
   <h1>{counts} for {genreName} animes <span class="text-main-color">✦</span></h1>
 </div>
-<svelte:window bind:scrollY={scrollY} />
+<svelte:window bind:scrollY={scrollY}/>
 <div class="container mx-auto select-none">
   <div class="grid grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10">
     {#each dataJson as item}
       <a href={`/anime/${item.anime_id}`}>
         <div class="text-font-color flex flex-col tracking-wide relative card" style="width: 100%; max-width: 150px;">
           <div class="overflow-hidden" style="width: 100%; height: 217px; max-width: 150px;">
-            <img class="object-cover w-full h-full" src={`http://${ipWebsite}:${portBackend}/image/${item.anime_id}`} alt={item.anime_name}>
+            <img class="object-cover w-full h-full" src={`http://${url}/image/${item.anime_id}`} alt={item.anime_name}>
           </div>
           <span class="mt-1 text-overflow">{item.anime_name}</span>
           <span class="text-floating">{item.anime_name}</span>

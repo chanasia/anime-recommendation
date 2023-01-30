@@ -1,14 +1,15 @@
 import { error } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
+import type { PageLoad } from './$types';
 import type { SimilarResponse,CurrentInfo, SimilarAnimes } from '../../../interfaces/@anime';
-import { IP_WEBSITE, PORT_BACKEND } from '$env/static/private';
+
+const url = "localhost:5000"
 
 export const load = ( async ({ params, fetch }) => {
   let currentInfo: CurrentInfo;
   let similarAnimes: SimilarAnimes[];
 
   try{
-    const res = await fetch(`http://${IP_WEBSITE}:${PORT_BACKEND}/similar_animes/${params.id}`)
+    const res = await fetch(`http://${url}/similar_animes/${params.id}`)
     const json = await res.json() as SimilarResponse
     const datas = json.datas
     currentInfo = datas.current_info
@@ -21,4 +22,4 @@ export const load = ( async ({ params, fetch }) => {
     currentInfo,
     similarAnimes
   };
-}) satisfies PageServerLoad;
+}) satisfies PageLoad;

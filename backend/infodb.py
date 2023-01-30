@@ -77,8 +77,10 @@ class AnimeList():
 
     def get_genre_with_page(self, genre_selected, page):
         if(self.is_genre_list_names(genre_selected)):
-            start_index = (page-1)*30
-            end_index = page*30-1
+            if(page == 1): limit = 30
+            else: limit = 10
+            start_index = (page-1)*limit
+            end_index = page*limit-1
             genreMatch = self.df_anime.genre.apply(lambda x: True if len([item for item in x.split(", ") if item in genre_selected]) != 0 else False)
             df_match = (self.df_anime.loc[genreMatch[genreMatch.values == True].index].sort_values(by='rating', ascending=False)).reset_index(drop=True)
             if len(df_match.loc[start_index:end_index].values) != 0:
