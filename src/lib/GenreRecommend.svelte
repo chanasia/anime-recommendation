@@ -2,16 +2,17 @@
 import pkg from 'lodash'
 const { debounce } = pkg
 import type { GenresRecommand, GenresInfo, Anime} from '../interfaces/@anime';
+import { url } from './path_url';
 
 export let genreSelected: string;
-const url = 'localhost:5000'
+// const url = 'localhost:5000'
 
 let listanimes: Anime[] = [];
 let counts: number;
 
 const fetchData = debounce(async () => {
   try{
-    const res = await fetch(`http://${url}/api/get_anime_match_genre/${genreSelected}`)
+    const res = await fetch(`${url}/api/get_anime_match_genre/${genreSelected}`)
     const json = await res.json() as GenresRecommand
     const dataJson: GenresInfo = json.datas
     listanimes = dataJson.listanimes
@@ -76,7 +77,7 @@ $: if(genreSelected){
       <a href={`/anime/${item.anime_id}`}>
         <div class="text-font-color flex flex-col tracking-wide relative card" style="width: 100%; max-width: 150px;">
           <div class="overflow-hidden" style="width: 100%; height: 217px; max-width: 150px;">
-            <img class="object-cover w-full h-full" src={`http://${url}/api/image/${item.anime_id}`} alt={item.anime_name}>
+            <img class="object-cover w-full h-full" src={`${url}/api/image/${item.anime_id}`} alt={item.anime_name}>
           </div>
           <span class="mt-1 text-overflow">{item.anime_name}</span>
           <span class="text-floating">{item.anime_name}</span>

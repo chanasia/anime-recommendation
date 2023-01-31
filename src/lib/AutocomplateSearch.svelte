@@ -3,10 +3,11 @@ import '../app.css'
 import Magnify from 'svelte-material-icons/Magnify.svelte'
 import Github from 'svelte-material-icons/Github.svelte'
 import type { AnimeResponse, AnimeInfo } from '../interfaces/@autocomplate';
+import { url } from './path_url';
 import pkg from 'lodash'
 const { debounce } = pkg
 
-const url = 'localhost:5000'
+// const url = 'localhost:5000'
 
 let searchTerm:string = '';
 let dataJson:AnimeInfo[] = [];
@@ -21,7 +22,7 @@ const fetchData = debounce(async () => {
     return;
   }
   try {
-    const res = await fetch(`http://${url}/api/partial_name/${searchTerm}`)
+    const res = await fetch(`${url}/api/partial_name/${searchTerm}`)
     const json = await res.json() as AnimeResponse
     dataJson = json.datas
   } catch (error) {
@@ -64,7 +65,7 @@ const handleResize = (event: UIEvent) => {
           {#each dataJson as suggestion}
             <li class="xl:w-160 lg:w-128 md:w-96 w-72 py-1 px-2  hover:cursor-pointer text-font-color hover:text-main-color ease-out duration-100">
               <a href={`/anime/${suggestion.anime_id}`} class="flex items-center">
-                <img style="width: 32px; height:45px;" src={`http://${url}/api/image/${suggestion.anime_id}`} alt={suggestion.name} draggable="false">
+                <img style="width: 32px; height:45px;" src={`${url}/api/image/${suggestion.anime_id}`} alt={suggestion.name} draggable="false">
                 <span class="ml-2">{suggestion.name}</span>
               </a>
             </li>

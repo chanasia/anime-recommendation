@@ -6,9 +6,10 @@ const { debounce } = pkg
 import ChevronRight from 'svelte-material-icons/ChevronRight.svelte'
 import ChevronLeft from 'svelte-material-icons/ChevronLeft.svelte'
 import { onMount, onDestroy } from 'svelte';
+import { url } from './path_url';
 
 export let genreSelected: string;
-const url = 'http://localhost:5000'
+// const url = 'http://localhost:5000'
 
 let dataJson: GenreCounts[] = [];
 

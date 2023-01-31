@@ -6,6 +6,7 @@ import type { PageData } from './$types';
 export let data: PageData;
 let currentInfo: CurrentInfo;
 let similarAnimes: SimilarAnimes[];
+import { url } from '$lib/path_url';
 
 $: if(data){
   currentInfo = data.currentInfo
@@ -61,7 +62,7 @@ $: if(data){
 <div style="background-color: #2e3032;">
   <div class="container mx-auto grid md:grid-cols-currentAnime sm:grid-cols-1 gap-8 py-4">
     <div class="md:justify-self-end justify-self-center self-center">
-      <img class="w-full object-cover" style="max-width: 225px; height: 325px;" src={`http://127.0.0.1:5000/api/image/${currentInfo.anime_id}`} alt={currentInfo.anime_name}>
+      <img class="w-full object-cover" style="max-width: 225px; height: 325px;" src={`${url}/api/image/${currentInfo.anime_id}`} alt={currentInfo.anime_name}>
     </div>
     <div class="text-purple-400 tracking-wide">
       <div class="grid grid-cols-labelInfo">
@@ -131,7 +132,7 @@ $: if(data){
     <a href={`/anime/${item.anime_id}`}>
       <div class="text-font-color flex flex-col tracking-wide relative card" style="width: 100%; max-width: 150px;">
         <div class="overflow-hidden" style="width: 100%; height: 217px; max-width: 150px;">
-          <img class="object-cover w-full h-full" src={`http://127.0.0.1:5000/api/image/${item.anime_id}`} alt={item.name}>
+          <img class="object-cover w-full h-full" src={`${url}/api/image/${item.anime_id}`} alt={item.name}>
         </div>
         <span class="mt-1 text-overflow">{item.name}</span>
         <span class="text-floating">{item.name}</span>

@@ -1,7 +1,6 @@
 <script lang="ts">
 import "../app.css"
 import GenresSelection from "$lib/GenresSelection.svelte";
-import type { PageData } from './$types';
 import GenreRecommend from "$lib/GenreRecommend.svelte";
 import AnimeIn2023 from "$lib/AnimeIn2023.svelte";
 

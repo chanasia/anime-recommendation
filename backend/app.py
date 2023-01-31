@@ -95,4 +95,4 @@ def get_anime_2023_with_page():
 
 if __name__ == "__main__":
     # print(infos.get_genre_list())
-    app.run(debug=True)
+    app.run()
