@@ -38,7 +38,7 @@ const handleResize = (event: UIEvent) => {
   console.log((event.target as Window).innerWidth)
   // ...
 };
-
+console.log(url)
 // document.addEventListener("resize", handleResize);
 </script>
 
