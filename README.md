@@ -1,38 +1,23 @@
-# create-svelte
+# Anime Recommendation
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+<h3>Hi everyone,</h3>
 
-## Creating a project
+This is my mini-project. I was a second-year student in a Data Mining course. My project is about recommending anime on a website using K-nearest neighbors (KNN) to make recommendations.
 
-If you're seeing this, you've probably already done this step. Congrats!
+<h3>About my project !</h3>
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+My datasets and images from [MyanimeList](https://myanimelist.net/).
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+I created the model using Jupyter, and I have uploaded all of my code to Google Colab [Click](https://colab.research.google.com/drive/1YGCNVizuTujnL4ZK2Nx35TGdcvIonIy0?usp=sharing).
 
-## Developing
+I created the website using Svelte for the frontend and Flask for the backend.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+<h3>How to use?</h3>
 
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+* First you want to download [backend.zip](https://www.dropbox.com/s/apyoabvieotk13s/backend.zip?dl=0), clone the frontend from main branch and the backend from backend branch
+* Once you have done this, you will have two folders - frontend and backend. You have to navigate to the backend folder and unzip the backend.zip file there.
+* Next, you need to open a new terminal and run the command `npm install` to install the necessary packages
+* Then, you should edit the `src/lib/path_url.ts` file and change the URL variable to your IP address.
+* Run the command `npm run build` to build project.
+* In the backend folder, you need to install the required packages by running the command `pip install -r requirements.txt`
+* Finally, to start the project, navigate to the frontend folder and run the command `npm start` in one terminal window and run the command `python app.py` in another terminal window to start the backend.
