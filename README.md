@@ -1,6 +1,7 @@
 # Anime Recommendation
 
-![image](https://drive.google.com/uc?id=1k31QFoPlqBcr2VSsCCr-Dltd46zm6q-T)
+![home](https://drive.google.com/uc?id=1k31QFoPlqBcr2VSsCCr-Dltd46zm6q-T)
+![similar anime](https://drive.google.com/uc?id=1aztjtf6dLqwyKkkazTxN1kNFneHIiNqh)
 
 <h3>Hi everyone,</h3>
 
