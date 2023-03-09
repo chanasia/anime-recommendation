@@ -9,7 +9,7 @@ export const load = ( async ({ params, fetch }) => {
   let similarAnimes: SimilarAnimes[];
 
   try{
-    const res = await fetch(`${url}/api/similar_animes/${params.id}`)
+    const res = await fetch(`${url}/similar_animes/${params.id}`)
     const json = await res.json() as SimilarResponse
     const datas = json.datas
     currentInfo = datas.current_info

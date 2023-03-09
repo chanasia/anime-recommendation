@@ -9,7 +9,7 @@ let listanimes: Anime[] = [];
 
 const fetchData = debounce(async () => {
   try{
-    const res = await fetch(`${url}/api/get_anime_2023_with_page/?page=1`)
+    const res = await fetch(`${url}/get_anime_2023_with_page/?page=1`)
     const json = await res.json() as Anime2023;
     listanimes = json.datas
   }catch(error){
@@ -74,7 +74,7 @@ fetchData()
         <a href={`/anime/${item.anime_id}`}>
           <div class="text-font-color flex flex-col tracking-wide relative card" style="width: 100%; max-width: 150px;">
             <div class="overflow-hidden" style="width: 100%; height: 217px; max-width: 150px;">
-              <img class="object-cover w-full h-full" src={`${url}/api/image/${item.anime_id}`} alt={item.anime_name}>
+              <img class="object-cover w-full h-full" src={`${url}/image/${item.anime_id}`} alt={item.anime_name}>
             </div>
             <span class="mt-1 text-overflow">{item.anime_name}</span>
             <span class="text-floating">{item.anime_name}</span>

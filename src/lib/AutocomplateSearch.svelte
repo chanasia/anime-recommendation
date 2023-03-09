@@ -22,7 +22,7 @@ const fetchData = debounce(async () => {
     return;
   }
   try {
-    const res = await fetch(`${url}/api/partial_name/${searchTerm}`)
+    const res = await fetch(`${url}/partial_name/${searchTerm}`)
     const json = await res.json() as AnimeResponse
     dataJson = json.datas
   } catch (error) {
@@ -65,7 +65,7 @@ console.log(url)
           {#each dataJson as suggestion}
             <li class="xl:w-160 lg:w-128 md:w-96 w-72 py-1 px-2  hover:cursor-pointer text-font-color hover:text-main-color ease-out duration-100">
               <a href={`/anime/${suggestion.anime_id}`} class="flex items-center">
-                <img style="width: 32px; height:45px;" src={`${url}/api/image/${suggestion.anime_id}`} alt={suggestion.name} draggable="false">
+                <img style="width: 32px; height:45px;" src={`${url}/image/${suggestion.anime_id}`} alt={suggestion.name} draggable="false">
                 <span class="ml-2">{suggestion.name}</span>
               </a>
             </li>

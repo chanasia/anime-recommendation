@@ -21,7 +21,7 @@ let page = 1;
 
 async function fetchData() {
   try{
-    const response = await fetch(`${url}/api/genre/?name=${genreName}&page=${page}`);
+    const response = await fetch(`${url}/genre/?name=${genreName}&page=${page}`);
     const json = await response.json() as Datas;
     dataJson = [...dataJson, ...json.datas];
   }catch (error) {
@@ -102,7 +102,7 @@ $: if(scrollY) handleScroll()
       <a href={`/anime/${item.anime_id}`}>
         <div class="text-font-color flex flex-col tracking-wide relative card" style="width: 100%; max-width: 150px;">
           <div class="overflow-hidden" style="width: 100%; height: 217px; max-width: 150px;">
-            <img class="object-cover w-full h-full" src={`${url}/api/image/${item.anime_id}`} alt={item.anime_name}>
+            <img class="object-cover w-full h-full" src={`${url}/image/${item.anime_id}`} alt={item.anime_name}>
           </div>
           <span class="mt-1 text-overflow">{item.anime_name}</span>
           <span class="text-floating">{item.anime_name}</span>
