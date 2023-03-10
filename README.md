@@ -1,6 +1,6 @@
 # Anime Recommendation
 
-<h4>RengMe! website: http://chanasia.site/rengme/<h4>
+<h4>RengMe! website: http://rengme.chanasia.site/<h4>
 
 ![home](https://drive.google.com/uc?id=1k31QFoPlqBcr2VSsCCr-Dltd46zm6q-T)
 ![similar anime](https://drive.google.com/uc?id=1aztjtf6dLqwyKkkazTxN1kNFneHIiNqh)
