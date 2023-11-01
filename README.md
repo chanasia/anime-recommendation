@@ -4,7 +4,7 @@
 
 ![home](https://drive.google.com/uc?id=1k31QFoPlqBcr2VSsCCr-Dltd46zm6q-T)
 ![similar anime](https://drive.google.com/uc?id=1aztjtf6dLqwyKkkazTxN1kNFneHIiNqh)
-
+ 
 <h3>Hi everyone,</h3>
 
 This is my mini-project. I was a second-year student in a Data Mining course. My project is about recommending anime on a website using K-nearest neighbors (KNN) to make recommendations.
