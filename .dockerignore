@@ -1,0 +1,6 @@
+frontends/node_modules
+frontends/.svelte-kit
+.git
+frontends/.git
+frontends/build
+frontends/.env

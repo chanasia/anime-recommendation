@@ -6,6 +6,7 @@ datasets
 images
 models
 __pycache__
+pyenv
 
 /frontends/.DS_Store
 /frontends/node_modules/

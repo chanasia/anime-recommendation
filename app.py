@@ -2,6 +2,7 @@ from flask import Flask, abort, send_file, request
 from flask_cors import CORS
 from infodb import AnimeList
 import warnings
+from gevent.pywsgi import WSGIServer
 
 warnings.filterwarnings("ignore", message="specific warning message")
 
@@ -94,4 +95,6 @@ def get_anime_2023_with_page():
     }
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    # app.run(host="0.0.0.0", port=5000)
+    http_server = WSGIServer(('0.0.0.0', 5000), app)
+    http_server.serve_forever()

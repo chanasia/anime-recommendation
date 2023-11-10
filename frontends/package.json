@@ -15,7 +15,7 @@
 		"@sveltejs/adapter-auto": "^1.0.2",
 		"@sveltejs/adapter-node": "^1.1.4",
 		"@sveltejs/adapter-static": "^1.0.5",
-		"@sveltejs/kit": "^1.0.0",
+		"@sveltejs/kit": "^1.27.4",
 		"@types/lodash": "^4.14.191",
 		"autoprefixer": "^10.4.13",
 		"nodemon": "^2.0.20",
@@ -33,5 +33,9 @@
 		"lodash": "^4.17.21",
 		"svelte-material-icons": "^2.1.0",
 		"svelte-routing": "^1.6.0"
-	}
+	},
+
+	"vite": {
+    "config": "./vite.config.ts"
+  }
 }

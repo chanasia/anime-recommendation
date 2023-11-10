@@ -1,0 +1,13 @@
+FROM node:18.17.1
+
+ENV PUBLIC_RENGME_API=http://localhost:5000
+
+WORKDIR /opt/frontends/
+
+COPY ./frontends/ ./
+RUN npm i --ignore-scripts=false --foreground-scripts --verbose sharp
+RUN npm i vite -g
+RUN npm run build
+RUN rm -r src .svelte-kit static
+CMD ["npm", "run", "start"]
+EXPOSE 3000

@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  build:
+    container_name: chanasia-rengme-build
+    image: node:18.17.1
+    workdir: /opt/frontends
+    copy:
+      - ./frontends/ ./
+    run:
+      - npm i && npm i vite -g
+      - npm run build
+  
+  website:
+    container_name: chanasia-rengme
+    image: node:18.17.1
+    workdir: /opt/frontends/
+    command: ["npm", "run", "start"]
+    ports:
+      - 3000:3000
+    restart: 'unless-stopped'
