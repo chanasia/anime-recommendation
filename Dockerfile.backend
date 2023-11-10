@@ -8,5 +8,6 @@ RUN wget -O backend.zip https://www.dropbox.com/s/apyoabvieotk13s/backend.zip?dl
 RUN apt install unzip -y
 RUN unzip backend.zip
 RUN rm backend.zip
+RUN apt remove unzip -y
 CMD [ "python", "app.py" ]
 EXPOSE 5000

@@ -18,9 +18,18 @@ I created the model using Jupyter, and I have uploaded all of my code to Google 
 I created the website using Svelte for the frontend and Flask for the backend.
 
 <h3>How to use?</h3>
+<h4>Build docker images</h4>
 
-```Dockerfile
+```cli
 docker build -f Dockerfile.frontend -t chanasia/rengme:1.0 .
+```
+```cli
+docker build -f Dockerfile.backend -t chanasia/rengme_api:1.0 .
+```
+<h4>Run docker-compose</h4>
+
+```cli
+docker-compose up -d
 ```
 
 
